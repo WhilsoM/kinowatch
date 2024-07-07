@@ -18,7 +18,8 @@
 			"@pages/*": ["src/pages/*"],
 			"@styles/*": ["src/styles/*"],
 			"@widgets/*": ["src/widgets/*"],
-			"@shared/*": ["src/shared/*"]
+			"@shared/*": ["src/shared/*"],
+			"@hooks/*": ["src/hooks/*"]
 		}
 	}
 }

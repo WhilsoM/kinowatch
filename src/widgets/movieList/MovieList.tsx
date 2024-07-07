@@ -49,17 +49,22 @@ const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
 			{!loading && (
 				<>
 					{movies.map((movie) => (
-						<div key={movie.kinopoiskId} className='movie'>
+						<div
+							key={movie.kinopoiskId}
+							className='movie flex text-center flex-col items-center py-16 '
+						>
 							<img
 								loading='lazy'
 								src={movie.posterUrlPreview}
 								alt={movie.nameRu}
 							/>
+
 							<div className='genres'>
 								{movie.genres.map((genre) => (
 									<p key={genre.genre}>{genre.genre}</p>
 								))}
 							</div>
+
 							<h4 className='movie-title'>{movie.nameRu}</h4>
 
 							<Link

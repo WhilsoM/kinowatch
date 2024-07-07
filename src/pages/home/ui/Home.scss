@@ -1,5 +1,5 @@
 .wrapper-movies {
 	display: grid;
-	grid-template-columns: repeat(3, 385px);
 	gap: 1rem;
+	justify-content: center;
 }

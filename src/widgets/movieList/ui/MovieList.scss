@@ -1,8 +1,5 @@
 .movie {
-	border-radius: 0.5rem;
-	background-color: #444;
-	padding: 1rem;
-	color: #fff;
+	background-color: rgba(0, 0, 0, 0.09);
 
 	img {
 		width: 30rem;
@@ -11,12 +8,15 @@
 		margin-bottom: 1rem;
 	}
 }
+
 .genres {
 	display: flex;
 	gap: 0.5rem;
+	flex-wrap: wrap;
+	max-width: 250px;
 	margin-bottom: 1rem;
 	p {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 	}
 }
 .movie-title {
