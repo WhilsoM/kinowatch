@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
 export const CursorTyping = () => {
-	const typedTextRef = useRef(null)
-	const cursorRef = useRef(null)
+	const typedTextRef: object = useRef(null)
+	const cursorRef: object = useRef(null)
 	const [timeoutId, setTimeoutId] = useState(null)
 
 	const textArray = [
@@ -14,11 +14,11 @@ export const CursorTyping = () => {
 		'quality',
 		'is awesome',
 	]
-	const typingDelay = 200
-	const erasingDelay = 100
-	const newTextDelay = 2000
-	let textArrayIndex = 0
-	let charIndex = 0
+	const typingDelay: number = 200
+	const erasingDelay: number = 100
+	const newTextDelay: number = 2000
+	let textArrayIndex: number = 0
+	let charIndex: number = 0
 
 	function type() {
 		if (charIndex < textArray[textArrayIndex].length) {

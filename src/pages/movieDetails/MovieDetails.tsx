@@ -2,32 +2,38 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { headers } from '@pages/home/api/index.ts'
+import { headers } from '@app/api/index'
 import '@pages/movieDetails/ui/MovieDetails.scss'
 
-interface IMovieDetails {
-	posterUrl: null
-	nameRu: string
-	year: number
-	countries: string[]
-	country: string
-	genres: string[]
-	genre: string
-	slogan: string
-	filmLength: number
-	webUrl: string
-}
+export const MovieDetails: React.FC = () => {
+	interface ICountry {
+		country: string
+	}
 
-export const MovieDetails = () => {
-	const { id } = useParams()
-	const [movie, setMovie] = useState([])
-	const [countries, setCountries] = useState([])
-	const [genres, setGenres] = useState([])
+	interface IGenre {
+		genre: string
+	}
+
+	interface IMovieDetails {
+		posterUrl: string | null
+		nameRu: string
+		year: number
+		countries: ICountry[]
+		genres: IGenre[]
+		slogan: string
+		filmLength: number
+		webUrl: string
+	}
+
+	const { id } = useParams<{ id: string }>()
+	const [movie, setMovie] = useState<IMovieDetails | null>(null)
+	const [countries, setCountries] = useState<ICountry[]>([])
+	const [genres, setGenres] = useState<IGenre[]>([])
 
 	useEffect(() => {
 		const fetchMovieDetails = async () => {
 			try {
-				const response = await axios.get(
+				const response: any = await axios.get(
 					`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`,
 					{ headers }
 				)
@@ -35,7 +41,6 @@ export const MovieDetails = () => {
 				setMovie(response.data)
 				setCountries(response.data.countries)
 				setGenres(response.data.genres)
-				console.log(response.data)
 			} catch (error) {
 				console.error('Error fetching movie details:', error)
 			}
@@ -44,7 +49,7 @@ export const MovieDetails = () => {
 		fetchMovieDetails()
 	}, [id])
 
-	const formatDuration = (duration: number) => {
+	const formatDuration = (duration: number): string => {
 		const hours = Math.floor(duration / 60)
 		const minutes = duration % 60
 		return `${hours} ч ${minutes} мин`
@@ -58,7 +63,7 @@ export const MovieDetails = () => {
 		<>
 			<div className='movie-details'>
 				<div className='img-movie'>
-					<img src={movie.posterUrl} alt={movie.nameRu} />
+					<img src={movie.posterUrl || ''} alt={movie.nameRu || ''} />
 				</div>
 
 				<div className='about-movie'>
@@ -71,7 +76,7 @@ export const MovieDetails = () => {
 							Год производства: <span>{movie.year}</span>
 						</p>
 						<p>
-							Страна:
+							Страна:{' '}
 							<span>
 								{countries.map((country) => (
 									<span key={country.country}>{country.country}</span>
@@ -79,7 +84,7 @@ export const MovieDetails = () => {
 							</span>
 						</p>
 						<p>
-							Жанр:
+							Жанр:{' '}
 							<span>
 								{genres.map((genre, index) => (
 									<span key={genre.genre}>
@@ -90,12 +95,9 @@ export const MovieDetails = () => {
 							</span>
 						</p>
 						<p>Слоган: {movie.slogan} </p>
+						<p>Длительность: {formatDuration(movie.filmLength)}</p>
 						<p>
-							Длительность:
-							{formatDuration(movie.filmLength)}
-						</p>
-						<p>
-							Смотреть фильм:
+							Смотреть фильм:{' '}
 							<Link to={movie.webUrl} target='_blank'>
 								клик!
 							</Link>

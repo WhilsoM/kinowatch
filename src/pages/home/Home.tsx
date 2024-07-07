@@ -1,4 +1,4 @@
-import Movies from '@widgets/movieList/MovieList.js'
+import MovieList from '@widgets/movieList/MovieList.js'
 import './ui/Home.scss'
 
 export const Home = () => {
@@ -7,7 +7,7 @@ export const Home = () => {
 			<h2 className='title'>Фильмы к просмотру</h2>
 
 			<div className='wrapper-movies'>
-				<Movies />
+				<MovieList api='collections' parametr='items' version='v2.2' />
 			</div>
 		</>
 	)

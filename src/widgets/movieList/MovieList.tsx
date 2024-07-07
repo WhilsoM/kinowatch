@@ -1,22 +1,36 @@
-import { headers } from '@pages/home/api/index.js'
+import { headers } from '@app/api'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import './ui/MovieList.scss'
 
-function Movies() {
-	const [movies, setMovies] = useState([])
-	const [loading, setLoading] = useState(false)
+type IMovieList = {
+	api: string
+	parametr: string
+	version: string
+}
+
+const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
+	type TMovies = {
+		kinopoiskId: number
+		posterUrlPreview: string | null
+		genres: string[]
+		genre: string
+		nameRu: string
+	}
+
+	const [movies, setMovies] = useState<TMovies | []>([])
+	const [loading, setLoading] = useState<Boolean>(false)
 
 	const fetchMovies = async () => {
 		setLoading((current) => !current)
 
 		try {
 			const response = await axios.get(
-				'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections',
+				`https://kinopoiskapiunofficial.tech/api/${version}/films/${api}`,
 				{ headers }
 			)
-
-			setMovies(response.data.items)
+			setMovies(response.data[parametr])
 		} catch (error) {
 			console.log('Error', error)
 		} finally {
@@ -46,9 +60,14 @@ function Movies() {
 									<p key={genre.genre}>{genre.genre}</p>
 								))}
 							</div>
-							<h4>{movie.nameRu}</h4>
+							<h4 className='movie-title'>{movie.nameRu}</h4>
 
-							<Link to={`/movies/${movie.kinopoiskId}`}>Подробнее</Link>
+							<Link
+								className='link-movie-details'
+								to={`/movies/${movie.kinopoiskId}`}
+							>
+								Подробнее
+							</Link>
 						</div>
 					))}
 				</>
@@ -57,4 +76,4 @@ function Movies() {
 	)
 }
 
-export default Movies
+export default MovieList
