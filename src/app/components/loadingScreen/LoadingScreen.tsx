@@ -3,8 +3,8 @@ import imgScreen from '/logo/logo-no-background.svg'
 
 export const LoadingScreen = () => {
 	const springs = useSpring({
-		from: { x: 0, opacity: 0 },
-		to: { x: 100, opacity: 1 },
+		from: { opacity: 0 },
+		to: { opacity: 1 },
 	})
 	return (
 		<animated.div
