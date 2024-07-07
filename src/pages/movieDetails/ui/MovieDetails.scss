@@ -1,0 +1,21 @@
+.movie-details {
+	display: flex;
+	gap: 2.5rem;
+}
+
+.img-movie {
+	img {
+		width: 302px;
+	}
+}
+.info-movie {
+	p {
+		margin-bottom: 0.9rem;
+		font-size: 1.4rem;
+	}
+}
+.subtitle {
+	margin-bottom: 1rem;
+	font-size: 1.9rem;
+	font-weight: 600;
+}
