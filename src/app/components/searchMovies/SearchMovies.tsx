@@ -4,15 +4,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './ui/SearchMovies.scss'
 
-interface ISearchMovies {
-	filmId: number
-	nameRu: string
-	posterUrlPreview: string
-	nameEn: string
-}
-
 export const SearchMovies = () => {
-	const [movieRelease, setMovieRelease] = useState<ISearchMovies | []>([])
+	const [movieRelease, setMovieRelease] = useState([])
 	const [isLoading, setIsLoading] = useState<Boolean>(false)
 	const [movieSearch, setMovieSearch] = useState<string>('')
 
