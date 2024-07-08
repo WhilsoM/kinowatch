@@ -1,4 +1,5 @@
 import { headers } from '@app/api'
+import { Input } from '@components/ui/input'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import './ui/SearchMovies.scss'
@@ -45,17 +46,17 @@ export const SearchMovies = () => {
 
 	return (
 		<div className='flex justify-center items-center flex-col'>
-			<input
+			<Input
 				type='text'
 				placeholder='Search movie...'
 				onChange={(event) => setMovieSearch(event.target.value)}
-				className='mb-4 text-2xl border-black border-2 py-2 px-3'
+				className='mb-4 text-2xl border-black border-2 py-6 px-5 max-w-full'
 			/>
 
 			<div className=' lg:grid lg:grid-cols-2 gap-5 xl:grid-cols-3'>
 				{filteredMovies.map((release: any) => {
 					return (
-						<div className='mb-6' key={release.filmId}>
+						<div className='mb-6 p-16 bg' key={release.filmId}>
 							<img
 								loading='lazy'
 								className='movie-search-img'
