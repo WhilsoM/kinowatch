@@ -61,13 +61,13 @@ export const MovieDetails: React.FC = () => {
 
 	return (
 		<>
-			<div className='movie-details'>
+			<div className='movie-details sm:flex-row lg:items-start'>
 				<div className='img-movie'>
 					<img src={movie.posterUrl || ''} alt={movie.nameRu || ''} />
 				</div>
 
 				<div className='about-movie'>
-					<h1 className='title'>{movie.nameRu}</h1>
+					<h1 className='title '>{movie.nameRu}</h1>
 
 					<h2 className='subtitle'>О фильме</h2>
 
