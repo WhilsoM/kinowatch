@@ -1,10 +1,11 @@
+import type { TEvent } from '@/types/types'
 import { useEffect, useState } from 'react'
 
 export const useResize = () => {
 	const [width, setWidth] = useState<number>(window.innerWidth)
 
 	useEffect(() => {
-		const handleResize = (event) => {
+		const handleResize = (event: TEvent) => {
 			setWidth(event.target.innerWidth)
 		}
 

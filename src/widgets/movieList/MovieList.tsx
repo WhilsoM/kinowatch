@@ -1,25 +1,12 @@
+import type { TMovieList, TObject } from '@/types/types'
 import { headers } from '@app/api'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './ui/MovieList.scss'
 
-type IMovieList = {
-	api: string
-	parametr: string
-	version: string
-}
-
-const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
-	type TMovies = {
-		kinopoiskId: number
-		posterUrlPreview: string | null
-		genres: string[]
-		genre: string
-		nameRu: string
-	}
-
-	const [movies, setMovies] = useState<TMovies | []>([])
+const MovieList: React.FC<TMovieList> = ({ api = '', parametr, version }) => {
+	const [movies, setMovies] = useState<TObject | []>([])
 	const [loading, setLoading] = useState<Boolean>(false)
 
 	const fetchMovies = async () => {
@@ -48,7 +35,7 @@ const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
 
 			{!loading && (
 				<>
-					{movies.map((movie) => (
+					{movies.map((movie: any) => (
 						<div
 							key={movie.kinopoiskId}
 							className='movie flex text-center flex-col items-center p-16 '
@@ -60,7 +47,7 @@ const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
 							/>
 
 							<div className='genres'>
-								{movie.genres.map((genre) => (
+								{movie.genres.map((genre: any) => (
 									<p key={genre.genre}>{genre.genre}</p>
 								))}
 							</div>
