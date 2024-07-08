@@ -38,7 +38,7 @@ const MovieList: React.FC<TMovieList> = ({ api = '', parametr, version }) => {
 					{movies.map((movie: any) => (
 						<div
 							key={movie.kinopoiskId}
-							className='movie flex text-center flex-col items-center p-16 '
+							className='movie flex text-center flex-col items-center p-6 '
 						>
 							<img
 								loading='lazy'
