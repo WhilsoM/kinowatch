@@ -51,7 +51,7 @@ const MovieList: React.FC<IMovieList> = ({ api = '', parametr, version }) => {
 					{movies.map((movie) => (
 						<div
 							key={movie.kinopoiskId}
-							className='movie flex text-center flex-col items-center py-16 '
+							className='movie flex text-center flex-col items-center p-16 '
 						>
 							<img
 								loading='lazy'
