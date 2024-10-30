@@ -1,0 +1,29 @@
+.movie-details {
+	display: flex;
+	gap: 2.5rem;
+	flex-direction: column;
+	align-items: center;
+}
+
+.img-movie {
+	img {
+		width: 302px;
+	}
+}
+.info-movie {
+	p {
+		margin-bottom: 0.9rem;
+		font-size: 1.4rem;
+	}
+}
+.subtitle {
+	margin-bottom: 1rem;
+	font-size: 1.9rem;
+	font-weight: 600;
+}
+
+.about-movie {
+	h1 {
+		text-align: left;
+	}
+}

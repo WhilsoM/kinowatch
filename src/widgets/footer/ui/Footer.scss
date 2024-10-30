@@ -1,0 +1,14 @@
+.footer {
+	margin-top: 3.5rem;
+
+	padding: 1.4rem 2.5rem;
+	-webkit-box-shadow: -1px -7px 16px -4px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -1px -7px 16px -4px rgba(0, 0, 0, 0.75);
+	box-shadow: -1px -7px 16px -4px rgba(0, 0, 0, 0.75);
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
